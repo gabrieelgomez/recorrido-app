@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hour: 2022-07-23 09:09:23
+  service_day: one
+  employee: one
+
+two:
+  hour: 2022-07-23 09:09:23
+  service_day: two
+  employee: two

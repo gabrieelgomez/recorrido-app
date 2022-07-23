@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2022-07-23
+  start_hour: 2022-07-23 08:57:11
+  end_hour: 2022-07-23 08:57:11
+  services: one
+
+two:
+  date: 2022-07-23
+  start_hour: 2022-07-23 08:57:11
+  end_hour: 2022-07-23 08:57:11
+  services: two
