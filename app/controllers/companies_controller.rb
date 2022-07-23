@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show edit update destroy shifts]
+  before_action :set_service_session, only: %i[shifts]
 
   # GET /companies or /companies.json
   def index
@@ -56,7 +57,18 @@ class CompaniesController < ApplicationController
   end
 
   def shifts
-    @services = @company.services.includes(service_days: :service_hours)
+    @service = @company.services
+                       .includes(service_days: :service_hours)
+                       .find_by(id: session['service_id'])
+
+    return unless @service.presence
+
+    @week_date = params[:week_date]&.to_date || Date.today
+
+    @service_days = @service.service_days
+                            .where(date: @week_date.all_week)
+
+    @weeks = @service.weeks
   end
 
   private
@@ -69,5 +81,9 @@ class CompaniesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def company_params
     params.require(:company).permit(:name)
+  end
+
+  def set_service_session
+    session['service_id'] = params[:service_id] if session['service_id'].nil?
   end
 end
