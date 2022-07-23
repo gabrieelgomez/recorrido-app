@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: %i[show edit update destroy]
+  before_action :set_company, only: %i[show edit update destroy shifts]
 
   # GET /companies or /companies.json
   def index
@@ -53,6 +53,10 @@ class CompaniesController < ApplicationController
       format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def shifts
+    @services = @company.services.includes(service_days: :service_hours)
   end
 
   private

@@ -1,0 +1,11 @@
+<tr id="<%= dom_id service_hour %>" class="divide-x divide-gray-200">
+
+  <td class="p-4 bg-<%= hour_has_employee?(service_hour) %>-50 whitespace-nowrap text-sm font-medium text-gray-900 text-center"><%= service_hour.hour.strftime('%H:%M') %> - <%= (service_hour.hour + 1.hour).strftime('%H:%M') %></td>
+
+  <td class="whitespace-nowrap px-2 text-sm text-gray-500">
+    <%= form_with(model: service_hour, class: "mb-7") do |form| %>
+      <%= form.collection_select :employee_id, service_hour.service_day.service.company.employees, :id, :name, { prompt: 'Por favor selecciona un empleado', include_blank: 'Ninguno' }, { class: "mt-1 block w-full text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md", data: { id: service_hour.id, controller: "shifts", action: "shifts#change" } } %>
+    <% end %>
+  </td>
+
+</tr>

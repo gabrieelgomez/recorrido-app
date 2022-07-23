@@ -1,0 +1,49 @@
+
+
+<div class="w-full mb-10">
+
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-xl font-semibold text-gray-900">Servicios de Monitoreos</h1>
+      <p class="mt-2 text-sm text-gray-700">Listado por dias de guardia.</p>
+    </div>
+  </div>
+
+  <% @services.each do |service| %>
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <p class="mt-2 text-sm text-gray-700"><%= service.name %></p>
+        <p class="mt-2 text-sm text-gray-700">Inicia: <%= service.start_date %></p>
+        <p class="mt-2 text-sm text-gray-700">Finaliza: <%= service.end_date %></p>
+
+      </div>
+    </div>
+
+    <div class="grid grid-cols-4 gap-4">
+      <% service.service_days.each do |service_day| %>
+        <div class="mt-8 flex flex-col">
+          <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+              <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-300">
+                  <div class="p-4 bg-blue-50 text-center">
+                    <span scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Fecha <%= service_day.date %></span>
+                  </div>
+
+                  <%= turbo_stream_from :service_hours %>
+                  <tbody class="divide-y divide-gray-200 bg-white">
+
+                    <% service_day.service_hours.each do |service_hour| %>
+                      <%= render 'service_hours/service_hour', service_hour: service_hour %>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
+</div>

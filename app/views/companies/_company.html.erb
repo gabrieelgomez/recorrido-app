@@ -1,12 +1,18 @@
-<div id="<%= dom_id company %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Nombre:</strong>
-    <%= company.name %>
-  </p>
+<tr id="<%= dom_id company %>">
+  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= company.name %></td>
 
   <% if action_name != "show" %>
-    <%= link_to "Mostrar", company, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Editar', edit_company_path(company), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+      <%= link_to "Ver monitoreos", shifts_company_path(company), class: "text-indigo-600 hover:text-indigo-900" %>
+    </td>
+
+    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+      <%= link_to "Mostrar", company, class: "text-indigo-600 hover:text-indigo-900" %>
+
+    </td>
+
+    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+      <%= link_to 'Editar', edit_company_path(company), class: "text-indigo-600 hover:text-indigo-900" %>
+    </td>
   <% end %>
-</div>
+</tr>
