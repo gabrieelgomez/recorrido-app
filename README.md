@@ -19,6 +19,7 @@
 * El frontend se desarrolló con el MVC de RoR, con la inclusión de usar Turbo Rails y Stimulus.js (turbo_frame y turbo_stream)
 * Se utilizó turbo_stream_from en service_hour, para tener un broadcast o streaming en tiempo real de cada vez que muta este modelo para una instancia, gracias al método de broadcasts_to dentro de su modelo.
 * Se utilizó turbo_frame_tag en el listado de services y services_days, para tener un live reload de los filtros por los selects
+* Al entrar por primera vez en la app, puedes dirigirte a Ver Monitoreos, luego escoger un tipo de servicio y luego filtrar el servicio por las semanas comprendidas en el rango del servicio, en la parte de filtrar y seleccionar empleado a turno no es necesario refrescar la página porque está desarrollado con turbo y stimulus.
 
 ### Descripción ERD
 > Company Table
@@ -35,3 +36,10 @@
 
 > Service Day Table
 * Tabla que almacena una hora, relacionado con un dia y un servicio. Tiene asociación directa con employee para saber quien tendrá este turno asignado.
+
+### TODO
+
+* Crear test más específicos y en casos de usos diferentes.
+* Desarrollar tests de integración.
+* Debido a mis debilidades para el front con vue.js y el tiempo estimado, tomé la opción de desarrollarlo con las herramientas de RoR el frontend. Sin embargo, se trabajar con vue.js y react.js pero me resultó más dificil hacerlo from scratch.
+* Realizar API y refactor de algunos métodos para que todo se procese por medio de servicios y así se reutilice lógica para ambos casos, API y front con turbo y stimulus.
