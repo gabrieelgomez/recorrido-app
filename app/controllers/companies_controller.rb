@@ -84,6 +84,6 @@ class CompaniesController < ApplicationController
   end
 
   def set_service_session
-    session['service_id'] = params[:service_id] if session['service_id'].nil?
+    session['service_id'] = params[:service_id] if params[:service_id].presence
   end
 end
