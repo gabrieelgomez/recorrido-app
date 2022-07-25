@@ -34,7 +34,7 @@
 > Service Day Table
 * Tabla que almacena datos de un dia de monitoreo, los cuales son creados de acuerdo a cuantos dias existen en el rango de fechas de su tabla padre Service. Tiene una hora inicio y hora fin, ejemplo 8am - 4pm.
 
-> Service Day Table
+> Service Hour Table
 * Tabla que almacena una hora, relacionado con un dia y un servicio. Tiene asociación directa con employee para saber quien tendrá este turno asignado.
 
 ### TODO
