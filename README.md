@@ -10,7 +10,7 @@
 ## Instalación
 - Instalar ruby `2.7.6`
 - `bundle install`
-- `rails db:create db:migrate rails db:seed`
+- `rails db:create db:migrate db:seed`
 - correr el servidor de rails con `bin/dev`
 
 ### Descripción
